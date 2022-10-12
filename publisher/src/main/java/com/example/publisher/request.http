@@ -1,0 +1,7 @@
+POST http://localhost:8080/transfer
+Content-Type: application/json
+
+{
+  "pan": "4565467547dasd654",
+  "amount": 12000324.00
+}

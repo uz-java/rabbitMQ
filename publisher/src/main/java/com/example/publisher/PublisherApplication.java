@@ -74,6 +74,7 @@ class TransferCreateVO {
 }
 
 interface TransactionRepository extends JpaRepository<Transaction, Long> {
+
 }
 @Service
 @RequiredArgsConstructor

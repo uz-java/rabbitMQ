@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  rabbitmq:
+    image: rabbitmq:${RABBIT_VERSION:-3-management}
+    container_name: rabbitmq
+    volumes:
+      - vol:/var/lib/rabbitmq
+      - log:/var/log/rabbitmq
+    networks:
+      - net
+    ports:
+      - "${SERVER_PORT:-5672}:5672"
+      - "${MANAGEMENT_PORT:-15672}:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: ${DEFAULT_USERNAME:-root}
+      RABBITMQ_DEFAULT_PASS: ${DEFAULT_PASSWORD:-password}
+
+volumes:
+  vol:
+    driver: local
+  log:
+    driver: local
+
+networks:
+  net:
+    driver: bridge

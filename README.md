@@ -19,6 +19,8 @@ Create `.env` file to define your own value
 | DEFAULT_USERNAME | root | String | Username |
 | DEFAULT_PASSWORD | password | String | Password |
 
+<br>
+
 Messaging is not new in Java world, developers have been using it with the help of JMS in Java. However, JMS is not truly interoperable as it is tightly coupled with the JVM and Java world. Big Organisations like JP Morgan, CISCO, Microsoft, RedHat, etc came together to create a truly interoperable messaging standard known as AMQP (Advanced Message Queuing Protocol). AMQP is one of the protocols RabbitMQ supports.
 
 * A Message broker is an agent who guarantees the message delivery. The rules a message broker understands is known as messaging protocol.
@@ -55,7 +57,7 @@ AMQP was designed with the following main characteristics as goals: Security, Re
 
 Any messaging system is made up of 4 important components, Message Producers, Message Consumers, Message Brokers, and the message itself.
 
-![messaging system](1.jpg)
+![messaging system](base.jpg)
 
 ## Elements of the AMQP system
 

@@ -103,6 +103,3 @@ docker-compose up -d
 ## Reference
 [Docker Hub](https://hub.docker.com/_/rabbitmq) <br>
 [X Team](https://x-team.com/blog/set-up-rabbitmq-with-docker-compose/)
-
-## Contributor
-<a href="https://github.com/Harin3Bone"><img src="https://img.shields.io/badge/Harin3Bone-181717?style=flat&logo=github&logoColor=ffffff"></a>

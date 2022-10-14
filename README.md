@@ -1,17 +1,13 @@
-# Docker for RabbitMQ
+ # Here simple RabbitMQ pub/sub configuration project
+ # Docker for RabbitMQ
 <img alt="RabbitMq" src="https://img.shields.io/badge/RabbitMq-FF6600?&style=flat&logo=rabbitmq&logoColor=FFFFFF">&nbsp;
 <img alt="Docker" src="https://img.shields.io/badge/Docker-2496ED?&style=flat&logo=docker&logoColor=ffffff">&nbsp;
 
-## Description
-This repository made for build simple of RabbitMQ with docker.
 
-## Prerequisite
-* [Docker](https://docs.docker.com/engine/install/ubuntu/)
-* [Docker Compose](https://docs.docker.com/compose/install/)
+ **_run rabbitmq on docker machine_**
 
-## Quick Start
-```bash
-time ./quick-start.sh
+```shell
+ docker run -d --hostname my-rabbit -p 15672:15672 -p 5672:5672 --name some-rabbit rabbitmq:management
 ```
 
 ## Default Value
@@ -23,82 +19,51 @@ Create `.env` file to define your own value
 | DEFAULT_USERNAME | root | String | Username |
 | DEFAULT_PASSWORD | password | String | Password |
 
-## Setup
-**Step 1:** Add node into your `docker-compose.yml`
-```yaml
-version: '3.8'
-services:
-  rabbitmq:
-    image: rabbitmq:${RABBIT_VERSION:-3-management}
-    container_name: rabbitmq
-    volumes:
-      - vol:/var/lib/rabbitmq
-      - log:/var/log/rabbitmq
-    networks:
-      - net
-```
-**Step 2:** Add default port in ports
-```yaml
-    ports:
-      - "${SERVER_PORT:-5672}:5672"
-      - "${MANAGEMENT_PORT:-15672}:15672"
-```
+Messaging is not new in Java world, developers have been using it with the help of JMS in Java. However, JMS is not truly interoperable as it is tightly coupled with the JVM and Java world. Big Organisations like JP Morgan, CISCO, Microsoft, RedHat, etc came together to create a truly interoperable messaging standard known as AMQP (Advanced Message Queuing Protocol). AMQP is one of the protocols RabbitMQ supports.
 
-**Step 3:** Add default account in environment
+* A Message broker is an agent who guarantees the message delivery. The rules a message broker understands is known as messaging protocol.
 
-You can change default user and password in 'environment' section
-```yaml
-    environment:
-      RABBITMQ_DEFAULT_USER: ${DEFAULT_USERNAME:-root}
-      RABBITMQ_DEFAULT_PASS: ${DEFAULT_PASSWORD:-password}
-```
-**Step 4:** Add the volume description
-```yaml
-volumes:
-  vol:
-    driver: local
-  log:
-    driver: local
-```
-**Step 5:** Add the network description
-```yaml
-networks:
-  net:
-    driver: bridge 
-```
+## What is RabbitMQ?
+RabbitMQ is an open-source message broker, licensed under the MPL 1.1. It is part of Pivotal software Inc (now owned by VMware). It has several features and benefits as listed below. It is popular in startups as well as big organizations.
 
-Then `docker-compose.yml` will look like this
-```yaml
-version: "3.8"
-services:
-  rabbitmq:
-    image: rabbitmq:${RABBIT_VERSION:-3-management}
-    container_name: rabbitmq
-    volumes:
-      - vol:/var/lib/rabbitmq
-      - log:/var/log/rabbitmq
-    networks:
-      - net
-    ports:
-      - "${SERVER_PORT:-5672}:5672"
-      - "${MANAGEMENT_PORT:-15672}:15672"
-    environment:
-      RABBITMQ_DEFAULT_USER: ${DEFAULT_USERNAME:-root}
-      RABBITMQ_DEFAULT_PASS: ${DEFAULT_PASSWORD:-password}
-volumes:
-  vol:
-    driver: local
-  log:
-    driver: local
-networks:
-  net:
-    driver: bridge
-```
+RabbitMQ is written in Erlang, designed for a distributed, fault-tolerant, soft real-time systems with almost 99.999% uptime.
 
-**Step 6:** Start server
-```bash
-docker-compose up -d
-```
+## Features and benefits of RabbitMQ
+- Open Source – Released under Mozilla Public License 1.1.
+- Multiple message protocols – AMQP, MQTT, STOMP, HTTP.
+- Lightweight – A single instance can run in less than 40MB of RAM.
+- Client library support – All modern programming languages like Java, Python, JavaScript, Erlang, etc today have RabbitMQ client library.
+- Highly Scalable architecture – Easily deploy a cluster of RabbitMQ.
+- Enterprise and Cloud-ready – Flexible enough to deploy on-premise infrastructure or in cloud infra.
+- Management & Monitoring – HTTP-API, command-line tool, and UI for managing and monitoring.
+
+## Who is using RabbitMQ?
+- Google uses RabbitMQ in their several products. Google Cloud Platform also offers RabbitMQ.
+- BBC uses it for the real-time news feed.
+- Reddit uses in its core application.
+- Mozilla uses RabbitMQ in Pulse.
+
+
+## What is AMQP – Advanced Message Queuing Protocol?
+The Advanced Message Queuing Protocol is an open standard for passing business messages between applications.  It connects systems, feeds business processes with the information they need and reliably transmits onward the instructions that achieve their goals.
+
+If you have read my articles on JMS, I clearly mentioned the limitations of JMS such as Security, Scalability, etc. But AMQP is designed to eliminate such limitations.
+
+AMQP was designed with the following main characteristics as goals: Security, Reliability, Interoperability, Open standard.
+
+## Basic components of a Messaging system
+
+Any messaging system is made up of 4 important components, Message Producers, Message Consumers, Message Brokers, and the message itself.
+
+![messaging system](1.jpg)
+
+## Elements of the AMQP system
+
+AMQP stands for Advanced Message Queuing Protocol, it creates the interoperability between Producer, Message Broker, and the Consumer. Just like any messaging system, a producer/publisher creates a message and sends the message to an Exchange. Then the Exchange routes the message to one or more Queues depending upon the related Bindings
+
+![amqp](amqp.png)
+
+<br>
 
 ## Reference
 [Docker Hub](https://hub.docker.com/_/rabbitmq) <br>

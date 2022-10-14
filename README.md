@@ -85,7 +85,6 @@ services:
     environment:
       RABBITMQ_DEFAULT_USER: ${DEFAULT_USERNAME:-root}
       RABBITMQ_DEFAULT_PASS: ${DEFAULT_PASSWORD:-password}
-      TZ: ${TIMEZONE:-"Asia/Bangkok"}
 volumes:
   vol:
     driver: local

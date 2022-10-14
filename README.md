@@ -51,7 +51,6 @@ You can change default user and password in 'environment' section
     environment:
       RABBITMQ_DEFAULT_USER: ${DEFAULT_USERNAME:-root}
       RABBITMQ_DEFAULT_PASS: ${DEFAULT_PASSWORD:-password}
-      TZ: ${TIMEZONE:-"Asia/Bangkok"}
 ```
 **Step 4:** Add the volume description
 ```yaml

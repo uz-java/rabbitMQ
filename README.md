@@ -4,7 +4,6 @@
 
 <img alt="Docker" src="https://img.shields.io/badge/Docker-2496ED?&style=flat&logo=docker&logoColor=ffffff">&nbsp;
 
-
  **_run rabbitmq on docker machine_**
 
 ```shell

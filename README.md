@@ -14,6 +14,7 @@
  
  
  
+ 
  # Docker for RabbitMQ
 <img alt="RabbitMq" src="https://img.shields.io/badge/RabbitMq-FF6600?&style=flat&logo=rabbitmq&logoColor=FFFFFF">&nbsp;
 
